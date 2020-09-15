@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
+import Item from './Item';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component{
 
+  constructor(){
+    super();
+    this.onClick = this.onClick.bind(this);
+    this.state = {  
+      list: [],
+      value: '',
+      elements:[],
+      i: 0
+    };
+  }
+
+  onClick = (event) => {
+    console.log(this.state.elements.length);
+    if(this.state.value !== ''){
+      this.state.list.push(this.state.value);
+      this.setState({
+        value: '',
+      });
+    }
+  }
+  handleChange = (event) =>{
+    this.setState({
+      value: event.target.value
+    });
+  }
+  render(){ 
+    for(this.state.i; this.state.i < this.state.list.length; this.state.i++){
+      this.state.elements.push(
+      <div key={this.state.i}>
+        <Item className='item' key={this.state.i} value={this.state.list[this.state.i]} />
+      </div>);
+    }
+    return ( 
+      <div className="App">
+        <div className='container' style={this.style}>
+          {this.state.elements}
+        </div>      
+        <input type='text' onChange={this.handleChange} value={this.state.value || ''} placeholder='Enter new item'></input>
+        <button onClick={this.onClick}>Add Item</button>  
+      </div>
+    );
+  }
+}
 export default App;

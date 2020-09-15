@@ -1,0 +1,8 @@
+.item-div{
+    display: block;
+     background-color: rgb(211, 253, 230); 
+    height: 20px;
+    width: 200px;
+     border: 1px solid black; 
+    text-align: center;
+}
