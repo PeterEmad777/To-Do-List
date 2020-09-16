@@ -1,8 +1,27 @@
-.item-div{
-    display: block;
-     background-color: rgb(211, 253, 230); 
+.whole-item{
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+}
+.item-div:hover{
+    background-color: #4CAF50;
+}
+.done-button{
+    width: 20px;
     height: 20px;
-    width: 200px;
-     border: 1px solid black; 
-    text-align: center;
+    background-color: green;
+    margin: 2px;
+}
+.delete-button{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    margin: 2px;
+}
+ .done{
+    width: 100%;
+    background-color: #4CAF50;
+}
+.initial{
+    width: 100%;
 }

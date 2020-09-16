@@ -24,6 +24,11 @@ class App extends React.Component{
       });
     }
   }
+  deleteItem = (id) => {
+    var newList = this.state.list.filter((item, index) => index != id);
+    console.log(newList);
+  }
+
   handleChange = (event) =>{
     this.setState({
       value: event.target.value
@@ -32,8 +37,8 @@ class App extends React.Component{
   render(){ 
     for(this.state.i; this.state.i < this.state.list.length; this.state.i++){
       this.state.elements.push(
-      <div key={this.state.i}>
-        <Item className='item' key={this.state.i} value={this.state.list[this.state.i]} />
+      <div className='item' key={this.state.i}>
+        <Item key={this.state.i} value={this.state.list[this.state.i]} DeleteItem={this.deleteItem} />
       </div>);
     }
     return ( 
@@ -41,8 +46,10 @@ class App extends React.Component{
         <div className='container' style={this.style}>
           {this.state.elements}
         </div>      
-        <input type='text' onChange={this.handleChange} value={this.state.value || ''} placeholder='Enter new item'></input>
-        <button onClick={this.onClick}>Add Item</button>  
+        <div className='input-block'>
+          <input type='text' className='text-box' onChange={this.handleChange} value={this.state.value || ''} placeholder='Enter new item'></input>
+          <button className='button' onClick={this.onClick}>Add Item</button>  
+        </div>
       </div>
     );
   }
