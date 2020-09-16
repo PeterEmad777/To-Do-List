@@ -13,11 +13,9 @@ class Item extends React.Component{
         this.setState({
             class: 'done'
         });
-        console.log(this.state.class);
     }
     deleteClick = () => {
-        console.log(this.key);
-        //this.props.DeleteItem(this.props.key);
+        this.props.DeleteItem(this.props.Index);
     }
     render(){
 
@@ -26,8 +24,8 @@ class Item extends React.Component{
                 <div className='item-div' className={this.state.class} style={ItemStyle}>
                     {this.props.value}
                 </div>
-                <button onClick={this.doneClick} className='done-button'></button>
-                <button onClick={this.deleteClick} className='delete-button'></button>
+                <button onClick={this.doneClick} className='done-button'>✔</button>
+                <button onClick={this.deleteClick} className='delete-button'>✘</button>
             </div>
         );
     }
